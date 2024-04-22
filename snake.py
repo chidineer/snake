@@ -22,6 +22,12 @@ pygame.display.set_caption("Snake Game")
 # Clock
 clock = pygame.time.Clock()
 
+def draw_grid():
+    for x in range(0, WIDTH, CELL_SIZE):
+        for y in range(0, HEIGHT, CELL_SIZE):
+            rect = pygame.Rect(x, y, CELL_SIZE, CELL_SIZE)
+            pygame.draw.rect(screen, WHITE, rect, 1)
+            
 def random_food_position():
     return (random.randint(0, GRID_WIDTH - 1) * CELL_SIZE, random.randint(0, GRID_HEIGHT - 1) * CELL_SIZE)
 
@@ -83,6 +89,8 @@ def game_loop():
 
         # Drawing
         screen.fill((0, 0, 0))
+        # draw_grid()
+        
         for pos in snake_pos:
             pygame.draw.rect(screen, GREEN, pygame.Rect(pos[0], pos[1], CELL_SIZE, CELL_SIZE))
         pygame.draw.rect(screen, RED, pygame.Rect(food_pos[0], food_pos[1], CELL_SIZE, CELL_SIZE))
@@ -99,7 +107,7 @@ def display_game_over(screen, score):
     game_over_text = font.render("Game Over! Score: " + str(score), True, WHITE)
     screen.blit(game_over_text, (WIDTH // 2 - 200, HEIGHT // 2))
     pygame.display.update()
-    pygame.time.wait(2000)
+    pygame.time.wait(200)
 
 if __name__ == "__main__":
     while True:
