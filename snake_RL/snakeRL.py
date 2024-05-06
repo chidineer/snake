@@ -1,6 +1,6 @@
 
 import gym
-import snake_env
+import snake
 # import pybullet_envs
 import pybullet as p
 import numpy as np
@@ -13,7 +13,11 @@ import matplotlib.pyplot as plt
 from snake_imports import DQN_Solver
 import time
 
-TRAIN = False
+torch.set_default_device("mps")
+device = torch.device("mps")
+print (device)
+
+TRAIN = True
 
 # Hyper parameters that will be used in the DQN algorithm
 

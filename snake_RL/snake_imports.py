@@ -23,6 +23,9 @@ NETWORK_UPDATE_ITERS = 5000     # Number of samples 'C' for slowly updating the 
 FC1_DIMS = 128                   # Number of neurons in our MLP's first hidden layer
 FC2_DIMS = 128                   # Number of neurons in our MLP's second hidden layer
 
+torch.set_default_device("mps")
+device = torch.device("mps")
+print (device)
 # metrics for displaying training status
 best_reward = 0
 average_reward = 0
@@ -111,9 +114,9 @@ class DQN_Solver:
             eps_threshold = 1.0
         # if we rolled a value lower than epsilon sample a random action
         if random.random() < eps_threshold:
-            # return np.random.choice(np.array(range(2)), p=[0.9,0.1])    # sample random action with set priors (if we flap too much we will die too much at the start and learning will take forever)
+             return np.random.choice(np.array(range(4)), p=[0.25,0.25,0.25,0.25])    # sample random action with set priors (if we flap too much we will die too much at the start and learning will take forever)
             # return np.random.choice(np.array(range(9)), p=[0.1, 0.1, 0.1 ,0.1 ,0.1 ,0.1 ,0.15,0.1,0.15])
-            return np.random.choice(np.array(range(9)), p=[0.0, 0.1, 0.0 ,0.1 ,0.2 ,0.1 ,0.1, 0.30, 0.1])
+            #return np.random.choice(np.array(range(9)), p=[0.0, 0.1, 0.0 ,0.1 ,0.2 ,0.1 ,0.1, 0.30, 0.1])
         # otherwise policy network, Q, chooses action with highest estimated Q-value so far
         state = torch.tensor(observation).float().detach()
         state = state.unsqueeze(0)
