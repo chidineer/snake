@@ -131,7 +131,7 @@ def train():
             agent.n_games += 1
             agent.train_long_memory()
 
-            if agent.n_games % 50 == 0 and apples_count > 1:  # Example condition
+            if agent.n_games % 100 == 0 and apples_count > 1:  # Example condition
                 apples_count -= 1  # Decrease number of apples
                 print(f"Reducing apples to {apples_count}")
 

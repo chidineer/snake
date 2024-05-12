@@ -81,13 +81,13 @@ class SnakeGameAI:
         game_over = False
         if self.is_collision() or self.frame_iteration > 100 * len(self.snake):
             game_over = True
-            reward = -10
+            reward = -20
             return reward, game_over, self.score
 
         # 4. check for apple eating
         if self.head in self.apples:
             self.score += 1
-            reward = 10
+            reward = 5
             self.apples.remove(self.head)  # Remove the eaten apple
             self._place_food()  # Immediately place a new apple
 
