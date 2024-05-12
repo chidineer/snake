@@ -9,6 +9,7 @@ from helper import plot
 MAX_MEMORY = 100_000
 BATCH_SIZE = 200
 LR = 0.001
+Train = False
 
 
 class Agent:
@@ -88,7 +89,7 @@ class Agent:
         # random moves: tradeoff exploration / exploitation
         self.epsilon = 80 - self.n_games
         final_move = [0, 0, 0]
-        if random.randint(0, 200) < self.epsilon:
+        if Train and random.randint(0, 200) < self.epsilon:
             move = random.randint(0, 2)
             final_move[move] = 1
         else:
@@ -137,7 +138,7 @@ def train():
 
             game = SnakeGameAI(initial_apples=apples_count)
 
-            if score > record:
+            if Train and score > record:
                 record = score
                 agent.model.save()
 

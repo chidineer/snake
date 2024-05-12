@@ -11,13 +11,17 @@ class Linear_QNet(nn.Module):
         self.linear1 = nn.Linear(input_size, hidden_size)
         self.linear2 = nn.Linear(hidden_size, output_size)
 
+        if os.path.exists('C:/Users/Lukas/Documents/13887637_AIR/model/model_final.pth'):
+            self.load_state_dict(torch.load('C:/Users/Lukas/Documents/13887637_AIR/model/model_final.pth'))
+            print('Model loaded')
+
     def forward(self, x):
         x = F.relu(self.linear1(x))
         x = self.linear2(x)
         return x
 
     def save(self, file_name='model.pth'):
-        model_folder_path = './model'
+        model_folder_path = 'C:/Users/Lukas/Documents/13887637_AIR/model'
         if not os.path.exists(model_folder_path):
             os.makedirs(model_folder_path)
 
