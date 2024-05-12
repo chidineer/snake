@@ -3,6 +3,9 @@ AI Snake game for AIR
 ## Dependencies
 - This depends on Pygame.
 - To install Pygame <code>pip install pygame</code>
-## Run
-- To run <code>python3 snake.py</code>
+## Train
+- in agent.py change the boolean 'Train' to True
+- run <code>python3 agent.py</code>
+## Test
+- in agent.py change the boolean 'Train' to False
 
