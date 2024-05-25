@@ -52,20 +52,23 @@ nav ul li a:hover {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-section {
-    margin: 20px 0;
+.home-section {
     display: flex;
     justify-content: space-between;
 }
 
-section .content {
+.home-section .content {
     flex: 1;
     margin-right: 20px;
 }
 
-section .video {
+.home-section .video {
     flex: 1;
     max-width: 560px;
+}
+
+section {
+    margin: 20px 0;
 }
 
 section h2 {
