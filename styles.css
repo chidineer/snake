@@ -54,6 +54,18 @@ nav ul li a:hover {
 
 section {
     margin: 20px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+section .content {
+    flex: 1;
+    margin-right: 20px;
+}
+
+section .video {
+    flex: 1;
+    max-width: 560px;
 }
 
 section h2 {
