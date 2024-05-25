@@ -43,8 +43,34 @@
 It gets the current state. Determines the next move. Executes the move and observes the reward, new state, and whether the game ended. Trains the neural network with short-term memory. Stores the experience in long-term memory.
 If the game ends, it resets, increments the game counter, trains with long-term memory, and updates the number of apples if necessary.
 Records high scores and plots performance metrics. This script trains a neural network to play Snake using reinforcement learning, where the agent learns from both immediate and accumulated game experiences.</dd>
-              <dt>2. game.pyk</dt>
-              <dd>white cold drink</dd>
+              <dt>2. game.py</dt>
+              <dd>Initialization and Setup:
+
+The script uses the pygame library to create a snake game, where the snake moves in a grid and eats food (apples) to score points.
+It defines necessary imports, initializes pygame, and sets up a font for displaying the score.
+Enum and NamedTuple Definitions:
+
+Direction enum specifies possible movement directions: RIGHT, LEFT, UP, DOWN.
+Point namedtuple represents coordinates (x, y) on the game grid.
+              reset method sets initial direction, snake position, score, and places multiple apples randomly on the grid.
+              _place_food Method,
+Places an apple on the grid at a random position, ensuring it doesn't overlap with the snake or other apples.
+              THe play_step Method,
+Handles the game loop,
+Collects user input to quit the game,
+Moves the snake based on the action taken,
+Checks for collisions (game over) or if the snake has eaten an apple,
+Updates the game UI and controls game speed.
+is_collision Method;
+Checks if the snake's head collides with the boundary or itself.
+_update_ui Method:
+Renders the snake, apples, and score on the game window.
+_move Method:
+Updates the snake's direction and position based on the action taken (straight, right turn, left turn).
+Game Mechanics:
+The snake grows when it eats an apple, and a new apple is placed randomly on the grid.
+The game is over if the snake collides with the boundaries or itself.
+The score increases by 1 for each apple eaten.</dd>
               <dt>3. helper.py</dt>
               <dd>example text</dd>
               <dt>4. model.py</dt>
