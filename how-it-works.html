@@ -72,10 +72,48 @@ The snake grows when it eats an apple, and a new apple is placed randomly on the
 The game is over if the snake collides with the boundaries or itself.
 The score increases by 1 for each apple eaten.</dd>
               <dt>3. helper.py</dt>
-              <dd>example text</dd>
+              <dd>This script dynamically updates a plot displaying the progression of game scores and mean scores during training, enabling real-time visualization of the training performance within a Jupyter notebook.
+plt.title('Training...') sets the title of the plot.
+plt.xlabel('Number of Games') and plt.ylabel('Score') label the x and y axes respectively.
+plt.plot(scores) and plt.plot(mean_scores) plot the scores and mean scores on the graph.
+plt.ylim(ymin=0) sets the minimum y-axis limit to 0.
+plt.text(len(scores)-1, scores[-1], str(scores[-1])) and plt.text(len(mean_scores)-1, mean_scores[-1], str(mean_scores[-1])) annotate the last points on the scores and mean scores curves with their respective values.</dd>
               <dt>4. model.py</dt>
-              <dd>example text</dd>
+              <dd>This script defines a neural network model (Linear_QNet) and a training mechanism (QTrainer) for a reinforcement learning task, 
+                  specifically tailored for a Q-learning algorithm. The model can be saved and loaded, facilitating training continuation and reuse.
+                  The QTrainer class handles the training process, updating the model based on the agent's interactions with the environment.
+              Linear_QNet Class:
+
+Constructor (__init__):
+Initializes a neural network with two linear layers: linear1 (input to hidden) and linear2 (hidden to output).
+If a pre-trained model exists at the specified path, it loads the model's state.
+Forward Method:
+Defines the forward pass of the network: applies a ReLU activation function after the first linear layer and outputs the result from the second layer.
+Save Method:
+Saves the model's state dictionary to a specified file path, creating the directory if it doesn't exist.
+QTrainer Class:
+
+Constructor (__init__):
+Initializes the trainer with the model, learning rate (lr), and discount factor (gamma).
+Sets up the optimizer (Adam) and loss function (Mean Squared Error).
+train_step Method:
+Data Preparation:
+Converts state, next state, action, and reward to torch tensors.
+Ensures the tensors are 2-dimensional (batch format) by unsqueezing if necessary.
+Predicted Q-values:
+Computes the predicted Q-values from the current state using the model.
+Target Calculation:
+Copies the predicted Q-values and updates them with the reward and discounted future reward (if not done) for the action taken.
+Loss and Backpropagation:
+Computes the loss between the target and predicted Q-values.
+Performs backpropagation to update the model's parameters.</dd>
             </dl>
+            <h2>How Deep Q-Networks and Reinforcement Learning is utilised</h2>
+            <p>State Representation: The game state is represented as an array of features (e.g., danger in directions, current direction, location of food).
+Q-values Approximation: The Linear_QNet neural network approximates Q-values for each possible action given the current state.
+Experience Replay: The agent stores past experiences in a memory buffer and samples from this buffer to train the network, breaking correlation between consecutive experiences and stabilizing training.
+Epsilon-Greedy Strategy: Balances exploration (random actions) and exploitation (best predicted actions) to ensure the agent explores the environment while also improving its performance.
+Bellman Equation: The QTrainer class updates the Q-values using the Bellman equation, which incorporates the immediate reward and the discounted future reward, guiding the agent to maximize cumulative reward.</p>
             <br>
             <br>
 
