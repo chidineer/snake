@@ -37,7 +37,12 @@
             <dl>
               <dt>1. agent.py</dt>
               <dd>An Agent class is defined, initializing parameters like the number of games played, epsilon (for exploration),
-                  gamma (discount rate), memory buffer, neural network model (Linear_QNet), and a Q-learning trainer (QTrainer).</dd>
+                  gamma (discount rate), memory buffer, neural network model (Linear_QNet), and a Q-learning trainer (QTrainer).
+              The get_action method decides the snake's next move. It uses a balance of exploration (random moves) and exploitation 
+                  (moves based on the neural network's predictions), with exploration decreasing as more games are played. The train function initializes the game and continuously runs through game loops:
+It gets the current state. Determines the next move. Executes the move and observes the reward, new state, and whether the game ended. Trains the neural network with short-term memory. Stores the experience in long-term memory.
+If the game ends, it resets, increments the game counter, trains with long-term memory, and updates the number of apples if necessary.
+Records high scores and plots performance metrics. This script trains a neural network to play Snake using reinforcement learning, where the agent learns from both immediate and accumulated game experiences.</dd>
               <dt>2. game.pyk</dt>
               <dd>white cold drink</dd>
               <dt>3. helper.py</dt>
