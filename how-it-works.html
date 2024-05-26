@@ -44,16 +44,14 @@ It gets the current state. Determines the next move. Executes the move and obser
 If the game ends, it resets, increments the game counter, trains with long-term memory, and updates the number of apples if necessary.
 Records high scores and plots performance metrics. This script trains a neural network to play Snake using reinforcement learning, where the agent learns from both immediate and accumulated game experiences.</dd>
               <dt>2. game.py</dt>
-              <dd>Initialization and Setup:
-
-The script uses the pygame library to create a snake game, where the snake moves in a grid and eats food (apples) to score points.
-It defines necessary imports, initializes pygame, and sets up a font for displaying the score.
-Enum and NamedTuple Definitions:
+              <dd>
+The game script uses the Pygame library to create a snake game, where the snake moves in a grid and eats food (apples) to score points.
+It defines necessary imports, initialises Pygame, and sets up a font for displaying the score.
+The Enum and NamedTuple definitions are also handled in this section.
 
 Direction enum specifies possible movement directions: RIGHT, LEFT, UP, DOWN.
 Point namedtuple represents coordinates (x, y) on the game grid.
-              reset method sets initial direction, snake position, score, and places multiple apples randomly on the grid.
-              _place_food Method,
+              The reset method sets initial direction, snake position, score, and places multiple apples randomly on the grid and the _place_food Method,
 Places an apple on the grid at a random position, ensuring it doesn't overlap with the snake or other apples.
               THe play_step Method,
 Handles the game loop,
@@ -61,19 +59,14 @@ Collects user input to quit the game,
 Moves the snake based on the action taken,
 Checks for collisions (game over) or if the snake has eaten an apple,
 Updates the game UI and controls game speed.
-is_collision Method;
-Checks if the snake's head collides with the boundary or itself.
-_update_ui Method:
-Renders the snake, apples, and score on the game window.
-_move Method:
-Updates the snake's direction and position based on the action taken (straight, right turn, left turn).
-Game Mechanics:
-The snake grows when it eats an apple, and a new apple is placed randomly on the grid.
-The game is over if the snake collides with the boundaries or itself.
-The score increases by 1 for each apple eaten.</dd>
+THe is_collision Method checks if the snake's head collides with the boundary or itself.
+The _update_ui Method renders the snake, apples, and score on the game window.
+The _move Method updates the snake's direction and position based on the action taken (straight, right turn, left turn).
+The game mechanics functions by having the snake start with a few segments. The snake grows when it eats an apple, and a new apple is placed randomly on the grid.
+The game is over if the snake collides with the boundaries or itself. The score increases by 1 for each apple eaten.</dd>
               <dt>3. helper.py</dt>
               <dd>This script dynamically updates a plot displaying the progression of game scores and mean scores during training, enabling real-time visualization of the training performance within a Jupyter notebook.
-plt.title('Training...') sets the title of the plot.
+plt.title('Training...') outputs to the command line to show when the training model is undertaking the training command.
 plt.xlabel('Number of Games') and plt.ylabel('Score') label the x and y axes respectively.
 plt.plot(scores) and plt.plot(mean_scores) plot the scores and mean scores on the graph.
 plt.ylim(ymin=0) sets the minimum y-axis limit to 0.
@@ -87,8 +80,7 @@ plt.text(len(scores)-1, scores[-1], str(scores[-1])) and plt.text(len(mean_score
 Constructor (__init__):
 Initializes a neural network with two linear layers: linear1 (input to hidden) and linear2 (hidden to output).
 If a pre-trained model exists at the specified path, it loads the model's state.
-Forward Method:
-Defines the forward pass of the network: applies a ReLU activation function after the first linear layer and outputs the result from the second layer.
+Forward Method: Defines the forward pass of the network, applies a ReLU activation function after the first linear layer and outputs the result from the second layer 
 Save Method:
 Saves the model's state dictionary to a specified file path, creating the directory if it doesn't exist.
 QTrainer Class:
@@ -96,10 +88,8 @@ QTrainer Class:
 Constructor (__init__):
 Initializes the trainer with the model, learning rate (lr), and discount factor (gamma).
 Sets up the optimizer (Adam) and loss function (Mean Squared Error).
-train_step Method:
-Data Preparation:
-Converts state, next state, action, and reward to torch tensors.
-Ensures the tensors are 2-dimensional (batch format) by unsqueezing if necessary.
+Data Preparation: Converts state, next state, action, and reward to torch tensors and
+ensures the tensors are 2-dimensional (batch format) by unsqueezing if necessary.
 Predicted Q-values:
 Computes the predicted Q-values from the current state using the model.
 Target Calculation:
